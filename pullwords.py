@@ -5,7 +5,6 @@ import sys
 import codecs
 import re
 # import collections
-#import pyPdf
 
 
 def coded(filename):
@@ -20,11 +19,6 @@ def coded(filename):
         f = open(filename, "r")
         strs = f.read()
         sentence = re.findall("\w+", str.lower(strs))
-        # for line in f:
-        #     sentence.append(line)
-    #for line in codecs.open(filename, "r", encoding="utf-16").readlines():
-    #    if line != "\r\n" and line != "111\r\n":
-    #        sentence.append(line)
     return sentence
 
 
@@ -33,9 +27,6 @@ def removeNonAscii(s):
 
 
 def compared(word_l):
-    # word_l = []
-    # for word, count in words:
-    #     word_l.append(word)
     try:
         for i in range(len(word_l)):
             if len(word_l[i]) > 2:
@@ -53,9 +44,6 @@ def init(filename, alpha):
     sent1 = []
     word0 = []
     word_a = []
-    # for li in sentence[:]:
-    #     if not(li.startswith("00")):
-    #         sent1.append(li)
     for li in sentence[:]:
         li = re.sub('[-,,.!?":\[\]\';()~]', " ", li)
         wds = removeNonAscii(li)
@@ -69,8 +57,6 @@ def init(filename, alpha):
     word_a = list(set(word_a))
     word_a.sort()
     word_a = compared(word_a)
-    # for i in range(len(word_a)):
-    #     word_a = compared(word_a)
     print "The words starting with %r in %r list below:" % (alpha, filename)
     for word in word_a:
         print "{0:<20s}: {1:>8d}".format(word, sentence.count(word))
